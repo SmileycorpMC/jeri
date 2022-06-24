@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 import net.smileycorp.jemi.JEMIPlugin;
 
-@JEMIPlugin(modid = "car")
+@JEMIPlugin(modid = "cgm")
 public class MrCrayfishGunsPlugin implements IModPlugin {
 
 	@Override
