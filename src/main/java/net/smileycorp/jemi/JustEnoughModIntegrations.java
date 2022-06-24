@@ -3,7 +3,6 @@ package net.smileycorp.jemi;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import mezz.jei.api.IModPlugin;
@@ -22,7 +21,7 @@ public class JustEnoughModIntegrations implements IModPlugin {
 
 	private static Set<IModPlugin> JEMI_PLUGINS = new HashSet<IModPlugin>();
 
-	private static Logger logger = LogManager.getLogManager().getLogger(ModDefinitions.NAME);
+	private static Logger logger = Logger.getLogger(ModDefinitions.NAME);
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -51,11 +50,11 @@ public class JustEnoughModIntegrations implements IModPlugin {
 	}
 
 	public static void logInfo(Object message) {
-		logger.info((String) message);
+		logger.info(String.valueOf(message));
 	}
 
 	public static void logError(Object message, Exception e) {
-		logger.log(Level.SEVERE, (String) message);
+		logger.log(Level.SEVERE, String.valueOf(message));
 		e.printStackTrace();
 	}
 
