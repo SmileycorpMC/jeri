@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.rafradek_tf2_weapons;
+package net.smileycorp.jeri.plugins.rafradek_tf2_weapons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.smileycorp.jemi.ModDefinitions;
+import net.smileycorp.jeri.ModDefinitions;
 import rafradek.TF2weapons.item.ItemApplicableEffect;
 import rafradek.TF2weapons.item.ItemTF2;
 import rafradek.TF2weapons.item.crafting.AustraliumRecipe;

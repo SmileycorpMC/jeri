@@ -1,4 +1,4 @@
-package net.smileycorp.jemi;
+package net.smileycorp.jeri;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,22 +17,22 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @JEIPlugin
 @Mod(modid=ModDefinitions.MODID, name = ModDefinitions.NAME, version = ModDefinitions.NAME, dependencies = ModDefinitions.DEPENDENCIES)
-public class JustEnoughModIntegrations implements IModPlugin {
+public class JustEnoughRecipeIntegrations implements IModPlugin {
 
-	private static Set<IModPlugin> JEMI_PLUGINS = new HashSet<IModPlugin>();
+	private static Set<IModPlugin> JERI_PLUGINS = new HashSet<IModPlugin>();
 
 	private static Logger logger = Logger.getLogger(ModDefinitions.NAME);
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		String annotation = JEMIPlugin.class.getCanonicalName();
+		String annotation = JERIPlugin.class.getCanonicalName();
 		Set<ASMData> dataset = event.getAsmData().getAll(annotation);
 		for (ASMData data : dataset) {
 			String modid = (String) data.getAnnotationInfo().get("modid");
 			if (Loader.isModLoaded(modid)) {
 				try {
 					Class<?> plugin = Class.forName(data.getClassName());
-					if (IModPlugin.class.isAssignableFrom(plugin)) JEMI_PLUGINS.add((IModPlugin) plugin.newInstance());
+					if (IModPlugin.class.isAssignableFrom(plugin)) JERI_PLUGINS.add((IModPlugin) plugin.newInstance());
 				} catch (Exception e) {
 					logError("Error loading plugin: " + modid, e);
 				}
@@ -41,12 +41,12 @@ public class JustEnoughModIntegrations implements IModPlugin {
 	}
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
-		for (IModPlugin plugin : JEMI_PLUGINS) plugin.registerCategories(registry);
+		for (IModPlugin plugin : JERI_PLUGINS) plugin.registerCategories(registry);
 	}
 
 	@Override
 	public void register(IModRegistry registry) {
-		for (IModPlugin plugin : JEMI_PLUGINS) plugin.register(registry);
+		for (IModPlugin plugin : JERI_PLUGINS) plugin.register(registry);
 	}
 
 	public static void logInfo(Object message) {

@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.car;
+package net.smileycorp.jeri.plugins.car;
 
 import javax.annotation.Nonnull;
 
@@ -11,14 +11,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.smileycorp.jemi.JEMIPlugin;
+import net.smileycorp.jeri.JERIPlugin;
 
 import com.google.common.collect.Lists;
 
 import de.maxhenkel.car.fluids.ModFluids;
 import de.maxhenkel.car.items.ModItems;
 
-@JEMIPlugin(modid = "car")
+@JERIPlugin(modid = "car")
 public class CarPlugin implements IModPlugin {
 
 	@Override

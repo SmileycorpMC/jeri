@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.car;
+package net.smileycorp.jeri.plugins.car;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.smileycorp.jemi.ModDefinitions;
+import net.smileycorp.jeri.ModDefinitions;
 
 public abstract class CarMachineCategory implements IRecipeCategory<CarMachineRecipeWrapper> {
 

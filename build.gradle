@@ -15,8 +15,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.12.2-1.1.0'
-group = "net.smileycorp.jemi"
-archivesBaseName = "JustEnoughModIntegrations"
+group = "net.smileycorp.jeri"
+archivesBaseName = "JERI"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -69,7 +69,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "just-enough-mod-integrations",
+            "Specification-Title": "just-enough-recipe-integrations",
             "Specification-Vendor": "smileycorp",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,

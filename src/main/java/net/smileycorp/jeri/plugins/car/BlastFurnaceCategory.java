@@ -1,8 +1,8 @@
-package net.smileycorp.jemi.plugins.car;
+package net.smileycorp.jeri.plugins.car;
 
 import mezz.jei.api.IGuiHelper;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.smileycorp.jemi.ModDefinitions;
+import net.smileycorp.jeri.ModDefinitions;
 
 public class BlastFurnaceCategory extends CarMachineCategory {
 

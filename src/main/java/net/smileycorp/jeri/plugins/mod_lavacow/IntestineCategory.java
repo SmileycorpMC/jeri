@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.mod_lavacow;
+package net.smileycorp.jeri.plugins.mod_lavacow;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.smileycorp.jemi.ModDefinitions;
-import net.smileycorp.jemi.plugins.mod_lavacow.IntestineCategory.Wrapper;
+import net.smileycorp.jeri.ModDefinitions;
+import net.smileycorp.jeri.plugins.mod_lavacow.IntestineCategory.Wrapper;
 
 import com.Fishmod.mod_LavaCow.util.LootTableHandler;
 

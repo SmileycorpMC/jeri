@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.car;
+package net.smileycorp.jeri.plugins.car;
 
 import java.awt.Color;
 import java.util.List;

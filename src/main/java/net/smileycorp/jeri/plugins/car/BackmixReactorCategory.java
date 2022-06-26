@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.car;
+package net.smileycorp.jeri.plugins.car;
 
 import java.awt.Color;
 import java.util.List;
@@ -19,7 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fluids.FluidStack;
-import net.smileycorp.jemi.ModDefinitions;
+import net.smileycorp.jeri.ModDefinitions;
 
 import com.google.common.collect.Lists;
 

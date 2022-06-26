@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.rafradek_tf2_weapons;
+package net.smileycorp.jeri.plugins.rafradek_tf2_weapons;
 
 import javax.annotation.Nonnull;
 
@@ -8,10 +8,10 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jemi.JEMIPlugin;
+import net.smileycorp.jeri.JERIPlugin;
 import rafradek.TF2weapons.TF2weapons;
 
-@JEMIPlugin(modid="rafradek_tf2_weapons")
+@JERIPlugin(modid="rafradek_tf2_weapons")
 public class TF2Plugin implements IModPlugin {
 
 	@Override

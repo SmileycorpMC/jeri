@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.cgm;
+package net.smileycorp.jeri.plugins.cgm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.smileycorp.jemi.ModDefinitions;
-import net.smileycorp.jemi.plugins.cgm.GunWorkbenchCategory.Wrapper;
+import net.smileycorp.jeri.ModDefinitions;
+import net.smileycorp.jeri.plugins.cgm.GunWorkbenchCategory.Wrapper;
 
 import com.mrcrayfish.guns.common.WorkbenchRegistry;
 

@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.cgm;
+package net.smileycorp.jeri.plugins.cgm;
 
 import javax.annotation.Nonnull;
 
@@ -8,9 +8,9 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jemi.JEMIPlugin;
+import net.smileycorp.jeri.JERIPlugin;
 
-@JEMIPlugin(modid = "cgm")
+@JERIPlugin(modid = "cgm")
 public class MrCrayfishGunsPlugin implements IModPlugin {
 
 	@Override

@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.rafradek_tf2_weapons;
+package net.smileycorp.jeri.plugins.rafradek_tf2_weapons;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package net.smileycorp.jemi.plugins.mod_lavacow;
+package net.smileycorp.jeri.plugins.mod_lavacow;
 
 import javax.annotation.Nonnull;
 
@@ -8,12 +8,12 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jemi.JEMIPlugin;
+import net.smileycorp.jeri.JERIPlugin;
 
 import com.Fishmod.mod_LavaCow.init.FishItems;
 import com.google.common.collect.Lists;
 
-@JEMIPlugin(modid = "mod_lavacow")
+@JERIPlugin(modid = "mod_lavacow")
 public class FishsUndeadRisingPlugin implements IModPlugin {
 
 	@Override
