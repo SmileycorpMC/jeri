@@ -93,10 +93,10 @@ public class TF2CrafterCategory implements IRecipeCategory<TF2CrafterRecipeWrapp
 		else {
 			List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
 			List<ItemStack> output = Lists.newArrayList();
-			if (focus.getMode() == IFocus.Mode.OUTPUT && isValidFocusForUpgrades(focus))
+			if (focus != null) if (focus.getMode() == IFocus.Mode.OUTPUT && isValidFocusForUpgrades(focus))
 				inputs.set(wrapper.getUpgradeInputSlot(), Lists.newArrayList(wrapper.downgradeStack((ItemStack) focus.getValue())));
 			craftingGridHelper.setInputs(items, inputs);
-			if (focus.getMode() == IFocus.Mode.INPUT && isValidFocusForUpgrades(focus))
+			if (focus != null && focus.getMode() == IFocus.Mode.INPUT && isValidFocusForUpgrades(focus))
 				output.add(wrapper.upgradeStack((ItemStack) focus.getValue()));
 			else {
 				for (ItemStack stack : ingredients.getInputs(VanillaTypes.ITEM).get(wrapper.getUpgradeInputSlot())) {
