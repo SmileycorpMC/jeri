@@ -4,14 +4,16 @@ import javax.annotation.Nonnull;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
-import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
+import net.smileycorp.jeri.JEIPluginJERI;
 import net.smileycorp.jeri.JERIPlugin;
 
+import com.mrcrayfish.guns.init.ModBlocks;
+
 @JERIPlugin(modid = "cgm")
-public class MrCrayfishGunsPlugin implements IModPlugin {
+public class MrCrayfishGunsPlugin implements JEIPluginJERI {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -25,7 +27,7 @@ public class MrCrayfishGunsPlugin implements IModPlugin {
 		//gun workbench
 		registry.handleRecipes(GunWorkbenchCategory.Wrapper.class, (r) -> r, GunWorkbenchCategory.ID);
 		registry.addRecipes(GunWorkbenchCategory.getRecipes(), GunWorkbenchCategory.ID);
-		registry.addRecipeCatalyst(new ItemStack(com.mrcrayfish.guns.init.ModBlocks.WORKBENCH), GunWorkbenchCategory.ID);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.WORKBENCH), GunWorkbenchCategory.ID);
 	}
 
 }

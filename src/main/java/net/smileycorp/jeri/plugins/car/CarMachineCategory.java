@@ -28,10 +28,10 @@ public abstract class CarMachineCategory implements IRecipeCategory<CarMachineRe
 	public static final ResourceLocation TEXTURE = ModDefinitions.getResource("textures/gui/car/car_machine.png");
 
 	public CarMachineCategory(IGuiHelper guiHelper) {
-		background = guiHelper.createDrawable(TEXTURE, 0, 0, 155, 68);
-		IDrawableStatic arrowDrawable = guiHelper.createDrawable(TEXTURE, 0, 69, 24, 17);
+		background = guiHelper.createDrawable(TEXTURE, 0, 0, 155, 59);
+		IDrawableStatic arrowDrawable = guiHelper.createDrawable(TEXTURE, 0, 68, 24, 17);
 		arrow = guiHelper.createAnimatedDrawable(arrowDrawable, 160, IDrawableAnimated.StartDirection.LEFT, false);
-		IDrawableStatic energyDrawable = guiHelper.createDrawable(TEXTURE, 24, 69, 16, 11);
+		IDrawableStatic energyDrawable = guiHelper.createDrawable(TEXTURE, 24, 68, 16, 11);
 		energy = guiHelper.createAnimatedDrawable(energyDrawable, 160, IDrawableAnimated.StartDirection.TOP, true);
 	}
 

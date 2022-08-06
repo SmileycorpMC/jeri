@@ -1,12 +1,10 @@
 package net.smileycorp.jeri.plugins.car;
 
-import java.awt.Color;
 import java.util.List;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -38,8 +36,11 @@ public class CarMachineRecipeWrapper implements IRecipeWrapper {
 	}
 
 	@Override
-	public void drawInfo(Minecraft minecraft, int width, int height, int mouseX, int mouseY) {
-		minecraft.fontRenderer.drawString("2000 RF", 0, height-7, Color.DARK_GRAY.getRGB());
+	public List<String> getTooltipStrings( int mouseX, int mouseY) {
+		if (mouseX >= 1 && mouseX <= 16 && mouseY >= 1 && mouseY <= 57) {
+			return Lists.newArrayList("2000 RF");
+		}
+		return IRecipeWrapper.super.getTooltipStrings(mouseX, mouseY);
 	}
 
 }

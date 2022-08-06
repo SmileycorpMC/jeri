@@ -4,15 +4,15 @@ import javax.annotation.Nonnull;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
-import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
+import net.smileycorp.jeri.JEIPluginJERI;
 import net.smileycorp.jeri.JERIPlugin;
 import rafradek.TF2weapons.TF2weapons;
 
 @JERIPlugin(modid="rafradek_tf2_weapons")
-public class TF2Plugin implements IModPlugin {
+public class TF2Plugin implements JEIPluginJERI {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {

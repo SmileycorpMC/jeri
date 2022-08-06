@@ -1,6 +1,5 @@
 package net.smileycorp.jeri.plugins.car;
 
-import java.awt.Color;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -36,7 +35,7 @@ public class BackmixReactorCategory implements IRecipeCategory<BackmixReactorCat
 	public static final ResourceLocation TEXTURE = ModDefinitions.getResource("textures/gui/car/backmix_reactor.png");
 
 	public BackmixReactorCategory(IGuiHelper guiHelper) {
-		background = guiHelper.createDrawable(TEXTURE, 0, 0, 128, 68);
+		background = guiHelper.createDrawable(TEXTURE, 0, 0, 128, 59);
 		IDrawableStatic arrowDrawable = guiHelper.createDrawable(TEXTURE, 0, 68, 24, 17);
 		arrow = guiHelper.createAnimatedDrawable(arrowDrawable, 160, IDrawableAnimated.StartDirection.LEFT, false);
 		IDrawableStatic energyDrawable = guiHelper.createDrawable(TEXTURE, 24, 68, 16, 11);
@@ -90,8 +89,11 @@ public class BackmixReactorCategory implements IRecipeCategory<BackmixReactorCat
 		}
 
 		@Override
-		public void drawInfo(Minecraft minecraft, int width, int height, int mouseX, int mouseY) {
-			minecraft.fontRenderer.drawString("2000 RF", 0, height-7, Color.DARK_GRAY.getRGB());
+		public List<String> getTooltipStrings( int mouseX, int mouseY) {
+			if (mouseX >= 1 && mouseX <= 16 && mouseY >= 1 && mouseY <= 57) {
+				return Lists.newArrayList("2000 RF");
+			}
+			return IRecipeWrapper.super.getTooltipStrings(mouseX, mouseY);
 		}
 
 	}

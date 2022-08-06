@@ -1,16 +1,14 @@
 package net.smileycorp.jeri.plugins.car;
 
-import javax.annotation.Nonnull;
-
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
-import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.smileycorp.jeri.JEIPluginJERI;
 import net.smileycorp.jeri.JERIPlugin;
 
 import com.google.common.collect.Lists;
@@ -19,7 +17,7 @@ import de.maxhenkel.car.fluids.ModFluids;
 import de.maxhenkel.car.items.ModItems;
 
 @JERIPlugin(modid = "car")
-public class CarPlugin implements IModPlugin {
+public class CarPlugin implements JEIPluginJERI {
 
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
@@ -32,7 +30,7 @@ public class CarPlugin implements IModPlugin {
 	}
 
 	@Override
-	public void register(@Nonnull IModRegistry registry) {
+	public void register(IModRegistry registry) {
 		//oil mill
 		registry.handleRecipes(CarMachineRecipeWrapper.class, (r) -> r, OilMillCategory.ID);
 		registry.addRecipes(Lists.newArrayList(new CarMachineRecipeWrapper(new ItemStack(ModItems.CANOLA), new ItemStack(ModItems.RAPECAKE), new FluidStack(ModFluids.CANOLA_OIL, 100))), OilMillCategory.ID);
