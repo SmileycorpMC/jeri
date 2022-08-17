@@ -14,42 +14,33 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.12.2-1.1.1'
-group = "net.smileycorp.jeri"
-archivesBaseName = "JERI"
+version = "1.12.2-1.5.10"
+group= "rafradek.TF2weapons"
+archivesBaseName = "rafradek_tf2_weapons"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 minecraft {
-   
     mappings channel: 'snapshot', version: '20171003-1.12'
-   
+    
+    //accessTransformer = file('src/main/resources/META-INF/access_transformer.cfg')
 
-   
     runs {
         client {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
         }
 
         server {
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
         }
     }
-}
-
-repositories {
-    
 }
 
 configurations {
@@ -58,24 +49,22 @@ configurations {
 }
 
 dependencies {
-
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
 	
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-	
-    
 }
 
 jar {
     manifest {
         attributes([
-            "Specification-Title": "just-enough-recipe-integrations",
-            "Specification-Vendor": "smileycorp",
+            "Specification-Title": "TF2weapons",
+            "Specification-Vendor": "rafradek",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"smileycorp",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Vendor" :"rafradek",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+			"ForceLoadAsMod": "true"
         ])
         
     }
@@ -89,7 +78,6 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
         expand 'version':project.version, 'mcversion':"1.12.2"
     }
         

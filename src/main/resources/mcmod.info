@@ -1,16 +1,17 @@
+
 [
 {
-  "modid": "jeri",
-  "name": "Just Enough Recipe Integrations",
-  "description": "Adds JEI recipe support for mods that don't have it.",
-  "version": "1.1.1",
-  "mcversion": "1.12.2",
+  "modid": "rafradek_tf2_weapons",
+  "name": "TF2 Stuff Mod",
+  "description": "Characters, weapons",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["Smileycorp"],
-  "credits": "",
+  "authorList": ["rafradek"],
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [],
+  "credits": "Valve, lundgren1957, grodax, Cipher_punk, The_Last_Dovahkiin, Wolfkann/Pikachiflame, WanderingSoulofTime"
 }
 ]
