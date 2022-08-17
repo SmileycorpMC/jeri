@@ -14,7 +14,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.12.2-1.1.1'
+version = '1.12.2-1.1.2'
 group = "net.smileycorp.jeri"
 archivesBaseName = "JERI"
 

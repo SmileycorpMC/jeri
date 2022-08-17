@@ -14,11 +14,15 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.smileycorp.jeri.ModDefinitions;
+import net.smileycorp.jeri.ModUtils;
 
 import com.google.common.collect.Lists;
 import com.mrcrayfish.furniture.api.RecipeData;
@@ -75,8 +79,8 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 
 	public static class Wrapper implements IRecipeWrapper {
 
-		private final ItemStack input;
-		private final ItemStack output;
+		private final List<ItemStack> inputs = Lists.newArrayList();
+		private final List<ItemStack> outputs = Lists.newArrayList();
 
 		protected final int inkCost;
 		protected final int inkOffset;
@@ -84,10 +88,23 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 		private final IDrawableAnimated ink;
 
 		public Wrapper(IGuiHelper guiHelper, RecipeData recipe) {
-			input = recipe.getInput();
-			output =  input.copy();
-			output.setCount(2);
-			inkCost = input.getItem() == Items.ENCHANTED_BOOK ? 10000 : 1000;
+			boolean isEnchantedBook = recipe.getInput().getItem() == Items.ENCHANTED_BOOK;
+			if (isEnchantedBook) {
+				for (Enchantment enchantment : Enchantment.REGISTRY) {
+					if (enchantment.type != null) {
+						for (int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
+							inputs.add(ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i)));
+						}
+					}
+				}
+			}
+			else inputs.add(recipe.getInput());
+			for (ItemStack input : inputs) {
+				ItemStack output = input.copy();
+				output.setCount(2);
+				outputs.add(output);
+			}
+			inkCost = isEnchantedBook ? 10000 : 1000;
 			inkOffset = Math.max(1,(int)Math.round((inkCost)*(16d/10000)));
 			int ticks = (int)Math.round((inkCost)/2d);
 			IDrawableStatic progressDrawable = guiHelper.createDrawable(TEXTURE, 3, 62, 16, 24);
@@ -98,8 +115,8 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 
 		@Override
 		public void getIngredients(IIngredients ingredients) {
-			ingredients.setInputs(VanillaTypes.ITEM, Lists.newArrayList(input));
-			ingredients.setOutputs(VanillaTypes.ITEM, Lists.newArrayList(output));
+			ingredients.setInputLists(VanillaTypes.ITEM, ModUtils.wrapList(inputs));
+			ingredients.setOutputLists(VanillaTypes.ITEM, ModUtils.wrapList(outputs));
 		}
 
 		@Override

@@ -24,4 +24,6 @@ jei.category.cfm.Soap=Soap
 jei.category.cfm.Microwaving=Microwaving
 jei.category.cfm.Grilling=Grilling
 
+jei.category.bibliocraft.Typesetting=Typesetting
+
 jei.tooltip.jeri.TPO=Ticks per operation: %s
