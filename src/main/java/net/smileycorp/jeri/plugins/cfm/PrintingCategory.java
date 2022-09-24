@@ -3,6 +3,10 @@ package net.smileycorp.jeri.plugins.cfm;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+import com.mrcrayfish.furniture.api.RecipeData;
+import com.mrcrayfish.furniture.api.Recipes;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IDrawableAnimated;
@@ -11,6 +15,8 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
+import mezz.jei.api.recipe.IFocus;
+import mezz.jei.api.recipe.IFocus.Mode;
 import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
@@ -21,12 +27,9 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.smileycorp.jeri.ModDefinitions;
 import net.smileycorp.jeri.ModUtils;
-
-import com.google.common.collect.Lists;
-import com.mrcrayfish.furniture.api.RecipeData;
-import com.mrcrayfish.furniture.api.Recipes;
 
 public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrapper> {
 
@@ -61,16 +64,28 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, Wrapper recipeCFMRecipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, Wrapper wrapper, IIngredients ingredients) {
 		IGuiItemStackGroup items = recipeLayout.getItemStacks();
 		items.init(0, false, 10, 44);
 		items.init(1, true, 10, 0);
 		items.set(0, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
 		items.set(1, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+		IFocus<?> focus = recipeLayout.getFocus();
+		if (focus.getMode() == Mode.INPUT) {
+			if (focus.getValue() instanceof ItemStack) {
+				ItemStack output = wrapper.getOutput((ItemStack) focus.getValue());
+				if (!output.isEmpty()) items.set(0, output);
+			}
+		} else if (focus.getMode() == Mode.OUTPUT) {
+			if (focus.getValue() instanceof ItemStack) {
+				ItemStack input = wrapper.getInput((ItemStack) focus.getValue());
+				if (!input.isEmpty()) items.set(1, input);
+			}
+		}
 	}
 
 	public static List<Wrapper> getRecipes(IGuiHelper guiHelper) {
-		List<Wrapper> recipes = new ArrayList<Wrapper>();
+		List<Wrapper> recipes = new ArrayList<>();
 		for (RecipeData recipe : Recipes.getRecipes("printer")) {
 			recipes.add(new Wrapper(guiHelper, recipe));
 		}
@@ -90,7 +105,7 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 		public Wrapper(IGuiHelper guiHelper, RecipeData recipe) {
 			boolean isEnchantedBook = recipe.getInput().getItem() == Items.ENCHANTED_BOOK;
 			if (isEnchantedBook) {
-				for (Enchantment enchantment : Enchantment.REGISTRY) {
+				for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
 					if (enchantment.type != null) {
 						for (int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
 							inputs.add(ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i)));
@@ -129,9 +144,23 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 		public List<String> getTooltipStrings( int mouseX, int mouseY) {
 			if (mouseX >= 7 && mouseX <= 10 && mouseY >= 23 && mouseY <= 39) {
 				return Lists.newArrayList(new TextComponentTranslation("cfm.gui.ink_level")
-				.getFormattedText().replace("/", String.valueOf(inkCost)));
+						.getFormattedText().replace("/", String.valueOf(inkCost)));
 			}
 			return IRecipeWrapper.super.getTooltipStrings(mouseX, mouseY);
+		}
+
+		public ItemStack getInput(ItemStack output) {
+			if (ItemEnchantedBook.getEnchantments(output).hasNoTags()) return ItemStack.EMPTY;
+			ItemStack input = output.copy();
+			input.setCount(1);
+			return input;
+		}
+
+		public ItemStack getOutput(ItemStack input) {
+			if (ItemEnchantedBook.getEnchantments(input).hasNoTags()) return ItemStack.EMPTY;
+			ItemStack output = input.copy();
+			output.setCount(2);
+			return output;
 		}
 
 	}

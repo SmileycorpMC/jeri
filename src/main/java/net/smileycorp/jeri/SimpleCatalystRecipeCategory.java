@@ -26,7 +26,7 @@ public abstract class SimpleCatalystRecipeCategory<T extends IRecipeWrapper> ext
 	}
 
 	@Override
-	public void setRecipe(IRecipeLayout recipeLayout, T recipeCFMRecipeWrapper, IIngredients ingredients) {
+	public void setRecipe(IRecipeLayout recipeLayout, T wrapper, IIngredients ingredients) {
 		IGuiItemStackGroup items = recipeLayout.getItemStacks();
 		items.init(0, false, 47, 19);
 		items.init(1, true, 1, 19);
@@ -34,6 +34,10 @@ public abstract class SimpleCatalystRecipeCategory<T extends IRecipeWrapper> ext
 		items.set(0, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
 		items.set(1, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 		items.set(2, catalyst);
+	}
+
+	public ItemStack getCatalyst() {
+		return catalyst;
 	}
 
 }

@@ -39,8 +39,8 @@ public class PrinterInkCategory extends CFMFuelCategory {
 
 	public static class Wrapper extends CFMFuelWrapper {
 
-		public Wrapper(IGuiHelper guiHelper, ItemStack input, int iceOutput) {
-			super(guiHelper, input, iceOutput, 5000d);
+		public Wrapper(IGuiHelper guiHelper, ItemStack input, int inkOutput) {
+			super(guiHelper, input, inkOutput, 5000d);
 		}
 
 		@Override

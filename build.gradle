@@ -24,7 +24,7 @@ minecraft {
    
     mappings channel: 'snapshot', version: '20171003-1.12'
    
-
+	//accessTransformer = file('src/main/resources/META-INF/access_transformer.cfg')
    
     runs {
         client {
@@ -76,6 +76,7 @@ jar {
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"smileycorp",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+			//"FMLAT": "access_transformer.cfg"
         ])
         
     }
