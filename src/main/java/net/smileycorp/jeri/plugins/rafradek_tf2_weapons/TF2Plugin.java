@@ -24,7 +24,7 @@ public class TF2Plugin implements JEIPluginJERI {
 	@Override
 	public void register(@Nonnull IModRegistry registry) {
 		//tf2 crafter
-		registry.handleRecipes(TF2CrafterRecipeWrapper.class, (r) -> r, TF2CrafterCategory.ID);
+		registry.handleRecipes(TF2CrafterRecipeWrapper.class, r->r, TF2CrafterCategory.ID);
 		registry.addRecipes(TF2CrafterCategory.getRecipes(), TF2CrafterCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(TF2weapons.blockCabinet), TF2CrafterCategory.ID);
 	}

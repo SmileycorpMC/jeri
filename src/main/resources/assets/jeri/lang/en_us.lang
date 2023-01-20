@@ -25,5 +25,7 @@ jei.category.cfm.Microwaving=Microwaving
 jei.category.cfm.Grilling=Grilling
 
 jei.category.bibliocraft.Typesetting=Typesetting
+jei.category.bibliocraft.PrintingPress=Press Printing
+jei.category.bibliocraft.Typewriter=Typewriting
 
 jei.tooltip.jeri.TPO=Ticks per operation: %s

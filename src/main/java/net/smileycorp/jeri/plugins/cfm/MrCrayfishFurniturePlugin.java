@@ -4,6 +4,10 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.google.common.collect.Maps;
+import com.mrcrayfish.furniture.init.FurnitureBlocks;
+import com.mrcrayfish.furniture.init.FurnitureItems;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
@@ -15,10 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.smileycorp.jeri.JEIPluginJERI;
 import net.smileycorp.jeri.JERIPlugin;
 import net.smileycorp.jeri.JustEnoughRecipeIntegrations;
-
-import com.google.common.collect.Maps;
-import com.mrcrayfish.furniture.init.FurnitureBlocks;
-import com.mrcrayfish.furniture.init.FurnitureItems;
 
 @JERIPlugin(modid = "cfm")
 public class MrCrayfishFurniturePlugin implements JEIPluginJERI {
@@ -50,51 +50,51 @@ public class MrCrayfishFurniturePlugin implements JEIPluginJERI {
 		IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 		IGuiHelper guiHelper = jeiHelpers.getGuiHelper();
 		//computer
-		registry.handleRecipes(MineBayCategory.Wrapper.class, (r) -> r, MineBayCategory.ID);
+		registry.handleRecipes(MineBayCategory.Wrapper.class, r->r, MineBayCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.COMPUTER), MineBayCategory.ID);
 		//oven
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, OvenCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, OvenCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.OVEN), OvenCategory.ID);
 		//freezer
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, FreezingCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, FreezingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.FREEZER), FreezingCategory.ID);
 		//freezer coolants
-		registry.handleRecipes(FreezerCoolantCategory.Wrapper.class, (r) -> r, FreezerCoolantCategory.ID);
+		registry.handleRecipes(FreezerCoolantCategory.Wrapper.class, r->r, FreezerCoolantCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.FREEZER), FreezerCoolantCategory.ID);
 		registry.addRecipes(FreezerCoolantCategory.getRecipes(guiHelper), FreezerCoolantCategory.ID);
 		//printer
-		registry.handleRecipes(PrintingCategory.Wrapper.class, (r) -> r, PrintingCategory.ID);
+		registry.handleRecipes(PrintingCategory.Wrapper.class, r->r, PrintingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.PRINTER), PrintingCategory.ID);
 		//printer ink
-		registry.handleRecipes(PrinterInkCategory.Wrapper.class, (r) -> r, PrinterInkCategory.ID);
+		registry.handleRecipes(PrinterInkCategory.Wrapper.class, r->r, PrinterInkCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.PRINTER), PrinterInkCategory.ID);
 		registry.addRecipes(PrinterInkCategory.getRecipes(guiHelper), PrinterInkCategory.ID);
 		//toaster
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, ToastingCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, ToastingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.TOASTER), ToastingCategory.ID);
 		//cutting board
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, CuttingCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, CuttingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureItems.KNIFE), CuttingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.CHOPPING_BOARD), CuttingCategory.ID);
 		//blender
-		registry.handleRecipes(BlendingCategory.Wrapper.class, (r) -> r, BlendingCategory.ID);
+		registry.handleRecipes(BlendingCategory.Wrapper.class, r->r, BlendingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.BLENDER), BlendingCategory.ID);
 		//dishwasher
-		registry.handleRecipes(CFMWashingWrapper.class, (r) -> r, DishwashingCategory.ID);
+		registry.handleRecipes(CFMWashingWrapper.class, r->r, DishwashingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.DISHWASHER), DishwashingCategory.ID);
 		//washing machine
-		registry.handleRecipes(CFMWashingWrapper.class, (r) -> r, ClothesWashingCategory.ID);
+		registry.handleRecipes(CFMWashingWrapper.class, r->r, ClothesWashingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.WASHING_MACHINE), ClothesWashingCategory.ID);
 		//soap
-		registry.handleRecipes(SoapCategory.Wrapper.class, (r) -> r, SoapCategory.ID);
+		registry.handleRecipes(SoapCategory.Wrapper.class, r->r, SoapCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.DISHWASHER), SoapCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.WASHING_MACHINE), SoapCategory.ID);
 		registry.addRecipes(SoapCategory.getRecipes(guiHelper), SoapCategory.ID);
 		//microwave
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, MicrowavingCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, MicrowavingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.MICROWAVE), MicrowavingCategory.ID);
 		//grill
-		registry.handleRecipes(CFMRecipeWrapper.class, (r) -> r, GrillingCategory.ID);
+		registry.handleRecipes(CFMRecipeWrapper.class, r->r, GrillingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureBlocks.GRILL), GrillingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FurnitureItems.SPATULA), GrillingCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(Items.FLINT_AND_STEEL), GrillingCategory.ID);

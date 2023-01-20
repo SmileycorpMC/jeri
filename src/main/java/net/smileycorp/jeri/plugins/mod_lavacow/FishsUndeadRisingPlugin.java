@@ -2,6 +2,9 @@ package net.smileycorp.jeri.plugins.mod_lavacow;
 
 import javax.annotation.Nonnull;
 
+import com.Fishmod.mod_LavaCow.init.FishItems;
+import com.google.common.collect.Lists;
+
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
@@ -10,9 +13,6 @@ import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
 import net.smileycorp.jeri.JEIPluginJERI;
 import net.smileycorp.jeri.JERIPlugin;
-
-import com.Fishmod.mod_LavaCow.init.FishItems;
-import com.google.common.collect.Lists;
 
 @JERIPlugin(modid = "mod_lavacow")
 public class FishsUndeadRisingPlugin implements JEIPluginJERI {
@@ -27,7 +27,7 @@ public class FishsUndeadRisingPlugin implements JEIPluginJERI {
 	@Override
 	public void register(@Nonnull IModRegistry registry) {
 		//intestines loot table
-		registry.handleRecipes(IntestineCategory.Wrapper.class, (r) -> r, IntestineCategory.ID);
+		registry.handleRecipes(IntestineCategory.Wrapper.class, r->r, IntestineCategory.ID);
 		registry.addRecipes(Lists.newArrayList(new IntestineCategory.Wrapper()), IntestineCategory.ID);
 		registry.addRecipeCatalyst(new ItemStack(FishItems.INTESTINE), IntestineCategory.ID);
 		//anvil enchantments
