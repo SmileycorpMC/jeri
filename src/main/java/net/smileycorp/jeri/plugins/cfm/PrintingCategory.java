@@ -2,8 +2,11 @@ package net.smileycorp.jeri.plugins.cfm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mrcrayfish.furniture.api.RecipeData;
 import com.mrcrayfish.furniture.api.Recipes;
 
@@ -94,8 +97,7 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 
 	public static class Wrapper implements IRecipeWrapper {
 
-		private final List<ItemStack> inputs = Lists.newArrayList();
-		private final List<ItemStack> outputs = Lists.newArrayList();
+		private final Map<ItemStack, ItemStack> recipes = Maps.newHashMap();
 
 		protected final int inkCost;
 		protected final int inkOffset;
@@ -108,16 +110,19 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 				for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
 					if (enchantment.type != null) {
 						for (int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
-							inputs.add(ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i)));
+							ItemStack input = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i));
+							ItemStack output = input.copy();
+							output.setCount(2);
+							recipes.put(input, output);
 						}
 					}
 				}
 			}
-			else inputs.add(recipe.getInput());
-			for (ItemStack input : inputs) {
+			else {
+				ItemStack input = recipe.getInput();
 				ItemStack output = input.copy();
 				output.setCount(2);
-				outputs.add(output);
+				recipes.put(input, output);
 			}
 			inkCost = isEnchantedBook ? 10000 : 1000;
 			inkOffset = Math.max(1,(int)Math.round((inkCost)*(16d/10000)));
@@ -130,6 +135,12 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 
 		@Override
 		public void getIngredients(IIngredients ingredients) {
+			List<ItemStack> inputs = Lists.newArrayList();
+			List<ItemStack> outputs = Lists.newArrayList();
+			for (Entry<ItemStack, ItemStack> entry : recipes.entrySet()) {
+				inputs.add(entry.getKey());
+				outputs.add(entry.getValue());
+			}
 			ingredients.setInputLists(VanillaTypes.ITEM, ModUtils.wrapList(inputs));
 			ingredients.setOutputLists(VanillaTypes.ITEM, ModUtils.wrapList(outputs));
 		}
@@ -150,6 +161,8 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 		}
 
 		public ItemStack getInput(ItemStack output) {
+			if (recipes.containsValue(output)) for (Entry<ItemStack, ItemStack> entry : recipes.entrySet())
+				if (entry.getValue().equals(output)) return entry.getKey();
 			if (ItemEnchantedBook.getEnchantments(output).hasNoTags()) return ItemStack.EMPTY;
 			ItemStack input = output.copy();
 			input.setCount(1);
@@ -157,6 +170,7 @@ public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrappe
 		}
 
 		public ItemStack getOutput(ItemStack input) {
+			if (recipes.containsKey(input)) return recipes.get(input);
 			if (ItemEnchantedBook.getEnchantments(input).hasNoTags()) return ItemStack.EMPTY;
 			ItemStack output = input.copy();
 			output.setCount(2);

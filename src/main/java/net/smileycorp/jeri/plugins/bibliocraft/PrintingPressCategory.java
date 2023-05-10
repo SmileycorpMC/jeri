@@ -47,6 +47,8 @@ public class PrintingPressCategory extends SimpleCatalystRecipeCategory<Printing
 		super.setRecipe(recipeLayout, wrapper, ingredients);
 		IGuiItemStackGroup items = recipeLayout.getItemStacks();
 		IFocus<?> focus = recipeLayout.getFocus();
+		items.set(0, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
+		items.set(1, ingredients.getInputs(VanillaTypes.ITEM).get(0));
 		if (focus.getMode() == Mode.INPUT) {
 			if (focus.getValue() instanceof ItemStack) {
 				ItemStack output = wrapper.getOutput((ItemStack) focus.getValue());
