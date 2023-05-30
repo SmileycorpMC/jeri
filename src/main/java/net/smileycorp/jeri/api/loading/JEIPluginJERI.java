@@ -1,4 +1,4 @@
-package net.smileycorp.jeri;
+package net.smileycorp.jeri.api.loading;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IRecipeRegistry;

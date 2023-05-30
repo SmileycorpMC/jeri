@@ -22,8 +22,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.smileycorp.jeri.ModDefinitions;
-import net.smileycorp.jeri.ModUtils;
-import net.smileycorp.jeri.SimpleCatalystRecipeCategory;
+import net.smileycorp.jeri.api.ModUtils;
+import net.smileycorp.jeri.api.SimpleCatalystRecipeCategory;
 
 public class TypesettingCategory extends SimpleCatalystRecipeCategory<TypesettingCategory.Wrapper> {
 

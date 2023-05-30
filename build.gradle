@@ -61,13 +61,15 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
     implementation 'curse.maven:jei-238222:3043174'
 	implementation 'curse.maven:fishundeadrising-321139:4017095'
-	implementation 'curse.maven:tf2stuff-227615:2809427'
 	implementation 'curse.maven:obfuscate-289380:2916310'
 	implementation 'curse.maven:mrcrayfishguns-289479:2854400'
 	implementation 'curse.maven:mrcrayfishfurniture-55438:3865259'
 	implementation 'curse.maven:ultimatecar-267458:2626135'
 	implementation 'curse.maven:bibliocraft-228027:3647708'
 	implementation 'curse.maven:industrialcraft-242638:2746892'
+	//needed to load animania, as it blocks cursemaven
+	implementation files('libs/animania-1.12.2-base-2.0.3.28.jar')
+	implementation files('libs/animania-1.12.2-farm-1.0.2.28.jar')
 }
 
 jar {

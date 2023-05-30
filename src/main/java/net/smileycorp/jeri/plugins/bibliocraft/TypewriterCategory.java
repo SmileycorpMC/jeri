@@ -8,8 +8,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.smileycorp.jeri.ModDefinitions;
-import net.smileycorp.jeri.SimpleRecipeCategory;
-import net.smileycorp.jeri.SimpleRecipeWrapper;
+import net.smileycorp.jeri.api.SimpleRecipeCategory;
+import net.smileycorp.jeri.api.SimpleRecipeWrapper;
 
 public class TypewriterCategory extends SimpleRecipeCategory<SimpleRecipeWrapper> {
 

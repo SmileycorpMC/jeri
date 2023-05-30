@@ -1,4 +1,4 @@
-package net.smileycorp.jeri;
+package net.smileycorp.jeri.api.loading;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface JERIPlugin {
 
-	public String modid();
+	String modid();
 
 }

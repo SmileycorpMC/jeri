@@ -12,8 +12,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.smileycorp.jeri.JEIPluginJERI;
-import net.smileycorp.jeri.JERIPlugin;
+import net.smileycorp.jeri.api.loading.JEIPluginJERI;
+import net.smileycorp.jeri.api.loading.JERIPlugin;
 
 @JERIPlugin(modid = "car")
 public class CarPlugin implements JEIPluginJERI {

@@ -1,4 +1,4 @@
-package net.smileycorp.jeri;
+package net.smileycorp.jeri.api;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;

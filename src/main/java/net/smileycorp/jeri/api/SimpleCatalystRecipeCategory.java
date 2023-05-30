@@ -1,4 +1,4 @@
-package net.smileycorp.jeri;
+package net.smileycorp.jeri.api;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IGuiItemStackGroup;
@@ -8,6 +8,7 @@ import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.smileycorp.jeri.ModDefinitions;
 
 public abstract class SimpleCatalystRecipeCategory<T extends IRecipeWrapper> extends JERICategoryBase<T> {
 

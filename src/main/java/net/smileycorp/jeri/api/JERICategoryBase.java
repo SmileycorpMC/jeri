@@ -1,4 +1,4 @@
-package net.smileycorp.jeri;
+package net.smileycorp.jeri.api;
 
 import javax.annotation.Nonnull;
 
@@ -10,6 +10,7 @@ import mezz.jei.api.recipe.IRecipeCategory;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
+import net.smileycorp.jeri.ModDefinitions;
 
 public abstract class JERICategoryBase<T extends IRecipeWrapper> implements IRecipeCategory<T>{
 

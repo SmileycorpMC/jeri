@@ -32,7 +32,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.smileycorp.jeri.ModDefinitions;
-import net.smileycorp.jeri.ModUtils;
+import net.smileycorp.jeri.api.ModUtils;
 
 public class PrintingCategory implements IRecipeCategory<PrintingCategory.Wrapper> {
 

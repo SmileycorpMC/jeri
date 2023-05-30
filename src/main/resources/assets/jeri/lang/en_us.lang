@@ -7,8 +7,6 @@ jei.category.car.BlastFurnace=Blast Furnace
 jei.category.car.BackmixReactor=Backmix Reactor
 jei.category.car.SplitTank=Split Tank
 
-jei.category.rafradek_tf2_weapons.TF2Crafter=TF2 Crafting
-
 jei.category.cfm.Minebay=Minebay
 jei.category.cfm.Oven=Oven Cooking
 jei.category.cfm.Freezing=Freezing
@@ -28,4 +26,7 @@ jei.category.bibliocraft.Typesetting=Typesetting
 jei.category.bibliocraft.PrintingPress=Press Printing
 jei.category.bibliocraft.Typewriter=Typewriting
 
+jei.category.animania.CheeseMold=Cheese Mold
+
 jei.tooltip.jeri.TPO=Ticks per operation: %s
+jei.tooltip.jeri.Ticks=%s Ticks

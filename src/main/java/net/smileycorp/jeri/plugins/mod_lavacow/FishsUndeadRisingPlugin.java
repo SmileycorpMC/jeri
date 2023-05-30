@@ -11,8 +11,8 @@ import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jeri.JEIPluginJERI;
-import net.smileycorp.jeri.JERIPlugin;
+import net.smileycorp.jeri.api.loading.JEIPluginJERI;
+import net.smileycorp.jeri.api.loading.JERIPlugin;
 
 @JERIPlugin(modid = "mod_lavacow")
 public class FishsUndeadRisingPlugin implements JEIPluginJERI {

@@ -9,8 +9,8 @@ import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jeri.JEIPluginJERI;
-import net.smileycorp.jeri.JERIPlugin;
+import net.smileycorp.jeri.api.loading.JEIPluginJERI;
+import net.smileycorp.jeri.api.loading.JERIPlugin;
 
 @JERIPlugin(modid = "cgm")
 public class MrCrayfishGunsPlugin implements JEIPluginJERI {

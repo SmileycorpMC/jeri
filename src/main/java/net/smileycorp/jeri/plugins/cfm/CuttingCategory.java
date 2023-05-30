@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.smileycorp.jeri.ModDefinitions;
-import net.smileycorp.jeri.SimpleCatalystRecipeCategory;
+import net.smileycorp.jeri.api.SimpleCatalystRecipeCategory;
 
 import com.mrcrayfish.furniture.api.RecipeData;
 import com.mrcrayfish.furniture.api.Recipes;

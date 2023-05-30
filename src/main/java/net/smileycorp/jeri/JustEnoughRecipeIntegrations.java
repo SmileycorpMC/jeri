@@ -18,12 +18,14 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.discovery.ASMDataTable.ASMData;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.smileycorp.jeri.api.loading.JEIPluginJERI;
+import net.smileycorp.jeri.api.loading.JERIPlugin;
 
 @JEIPlugin
 @Mod(modid=ModDefinitions.MODID, name = ModDefinitions.NAME, version = ModDefinitions.NAME, dependencies = ModDefinitions.DEPENDENCIES)
 public class JustEnoughRecipeIntegrations implements IModPlugin {
 
-	static Set<JEIPluginJERI> JERI_PLUGINS = new HashSet<JEIPluginJERI>();
+	static Set<JEIPluginJERI> JERI_PLUGINS = new HashSet<>();
 
 	private static Logger logger = Logger.getLogger(ModDefinitions.NAME);
 
@@ -48,6 +50,7 @@ public class JustEnoughRecipeIntegrations implements IModPlugin {
 			} else logInfo("mod " + modid + " not detected, skipping plugin");
 		}
 	}
+
 	@Override
 	public void registerCategories(IRecipeCategoryRegistration registry) {
 		helpers = registry.getJeiHelpers();

@@ -16,9 +16,9 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.smileycorp.jeri.JEIPluginJERI;
-import net.smileycorp.jeri.JERIPlugin;
 import net.smileycorp.jeri.JustEnoughRecipeIntegrations;
+import net.smileycorp.jeri.api.loading.JEIPluginJERI;
+import net.smileycorp.jeri.api.loading.JERIPlugin;
 
 @JERIPlugin(modid = "cfm")
 public class MrCrayfishFurniturePlugin implements JEIPluginJERI {
