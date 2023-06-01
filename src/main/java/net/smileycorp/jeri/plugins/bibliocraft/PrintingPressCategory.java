@@ -1,8 +1,11 @@
 package net.smileycorp.jeri.plugins.bibliocraft;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 import jds.bibliocraft.items.ItemEnchantedPlate;
 import mezz.jei.api.IGuiHelper;
@@ -68,46 +71,48 @@ public class PrintingPressCategory extends SimpleCatalystRecipeCategory<Printing
 
 	public static class Wrapper implements IRecipeWrapper {
 
-		private final List<ItemStack> inputs = Lists.newArrayList();
-		private final List<ItemStack> outputs = Lists.newArrayList();
+		private final Map<ItemStack, ItemStack> recipes = Maps.newHashMap();
 
 		public Wrapper() {
 			for (Enchantment enchantment : ForgeRegistries.ENCHANTMENTS) {
 				if (enchantment.type != null) {
 					for (int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); ++i) {
-						outputs.add(ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i)));
+						ItemStack output = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, i));
+						ItemStack input = new ItemStack(ItemEnchantedPlate.instance);
+						input.setTagCompound(output.getTagCompound().copy());
+						recipes.put(input, output);
 					}
 				}
-			}
-			for (ItemStack output : outputs) {
-				ItemStack input = new ItemStack(ItemEnchantedPlate.instance);
-				input.setTagCompound(output.getTagCompound().copy());
-				inputs.add(input);
 			}
 		}
 
 		@Override
 		public void getIngredients(IIngredients ingredients) {
+			List<ItemStack> inputs = Lists.newArrayList();
+			List<ItemStack> outputs = Lists.newArrayList();
+			for (Entry<ItemStack, ItemStack> entry : recipes.entrySet()) {
+				inputs.add(entry.getKey());
+				outputs.add(entry.getValue());
+			}
 			ingredients.setInputLists(VanillaTypes.ITEM, ModUtils.wrapList(inputs));
 			ingredients.setOutputLists(VanillaTypes.ITEM, ModUtils.wrapList(outputs));
 		}
 
 		public ItemStack getInput(ItemStack output) {
-			if (!ItemEnchantedBook.getEnchantments(output).hasNoTags()) {
-				ItemStack input = new ItemStack(ItemEnchantedPlate.instance);
-				input.setTagCompound(output.getTagCompound().copy());
-				return input;
-			}
-			return ItemStack.EMPTY;
+			if (recipes.containsValue(output)) for (Entry<ItemStack, ItemStack> entry : recipes.entrySet())
+				if (entry.getValue().equals(output)) return entry.getKey();
+			if (ItemEnchantedBook.getEnchantments(output).hasNoTags()) return ItemStack.EMPTY;
+			ItemStack input = new ItemStack(ItemEnchantedPlate.instance);
+			input.setTagCompound(output.getTagCompound().copy());
+			return input;
 		}
 
 		public ItemStack getOutput(ItemStack input) {
-			if (!ItemEnchantedBook.getEnchantments(input).hasNoTags()) {
-				ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
-				output.setTagCompound(input.getTagCompound().copy());
-				return output;
-			}
-			return ItemStack.EMPTY;
+			if (recipes.containsKey(input)) return recipes.get(input);
+			if (ItemEnchantedBook.getEnchantments(input).hasNoTags()) return ItemStack.EMPTY;
+			ItemStack output = new ItemStack(Items.ENCHANTED_BOOK);
+			input.setTagCompound(output.getTagCompound().copy());
+			return output;
 		}
 
 	}
